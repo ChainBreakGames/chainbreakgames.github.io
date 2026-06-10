@@ -388,7 +388,7 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
