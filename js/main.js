@@ -139,3 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') show(current + 1);
   });
 });
+
+document.querySelectorAll('.game__team').forEach(team => {
+    team.addEventListener('click', () => {
+        const members = team.nextElementSibling;
+        members.classList.toggle('open');
+    });
+});
