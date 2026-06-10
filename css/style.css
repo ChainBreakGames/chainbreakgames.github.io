@@ -33,12 +33,38 @@ a.disabled {
     filter: grayscale(100%);
 }
 
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 120, 120, 0.35) transparent;
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 120, 120, 0.35);
+  border-radius: 10px;
+  border: 2px solid transparent; /* makes it look thinner/softer */
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(120, 120, 120, 0.5);
+}
+
 
 /* ── TOKENS ────────────────────────────────────────── */
 :root {
-  /* TODO: swap font names after replacing imports above */
-  --font-display: 'Display-Font', Georgia, serif;   /* DISPLAY_FONT */
-  --font-body:    'Body-Font', system-ui, sans-serif;        /* BODY_FONT    */
+  --font-display: 'Display-Font', Georgia, serif;
+  --font-body:    'Body-Font', system-ui, sans-serif;
 
   /* Dark antique palette */
   --bg-base:       #0E0B08;
@@ -396,7 +422,7 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
 /* ── GAME SECTION ───────────────────────────────────── */
 .game__screenshots {
   position: relative;
-  overflow: hidden;  /* this must be here and must actually clip */
+  overflow: hidden;
   cursor: default;
   width: 100%;
   transition: transform 0.2s ease;
