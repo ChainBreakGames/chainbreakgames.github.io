@@ -2,44 +2,199 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ChainBreakGames | Under Construction</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChainBreakGames — Indie Game Studio</title>
+  <meta name="description" content="ChainBreak Games e.U. is an independent game studio from Austria. Makers of Undervalued — an antique shop simulation game." />
+  <meta name="author" content="Marc Koppler — ChainBreak Games e.U." />
 
-    h1 {
-      font-size: 3em;
-      margin: 0;
-      color: #ff3c3c;
-    }
+  <!-- Open Graph (Steam / social link previews) -->
+  <meta property="og:title"       content="CHAINBREAKGAMES" />
+  <meta property="og:description" content="Independent game studio from Austria. Makers of Undervalued." />
+  <meta property="og:image"       content="assets/banner-16x9.png" />
+  <meta property="og:type"        content="website" />
 
-    p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
+  <!-- Icons -->
+  <link rel="icon"             type="image/png" sizes="32x32" href="assets/cbg-logo-simple.png" />
+  <link rel="apple-touch-icon"                               href="assets/cbg-logo-simple.png" />
 
-    .blinker {
-      animation: blink 1.2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-  <h1>ChainBreakGames</h1>
-  <p class="blinker">🚧 This website is under construction 🚧</p>
+
+<!-- ══════════════════════════════════
+     NAV
+══════════════════════════════════ -->
+<nav class="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo" aria-label="ChainBreakGames — home">
+    <img src="assets/cbg-logo.png" alt="" class="nav__logo-img"
+         onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CBG</div>'" />
+    <span class="nav__logo-text company-name">CHAINBREAKGAMES</span>
+  </a>
+
+  <ul class="nav__links" role="list">
+    <li><a href="#game">Game</a></li>
+    <li><a href="#about">Studio</a></li>
+    <li><a href="presskit.html">Press Kit</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+  </ul>
+
+  <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<main>
+  <section class="hero" aria-label="Hero — Undervalued">
+    <h1 class="hero__announcement fade-up delay-1">Coming 2026</h1>
+
+    <div class="hero__banner fade-up">
+      <img src="assets/undervalued_game_banner.png" alt="Undervalued — antique shop game"
+           onerror="this.parentNode.innerHTML='<div class=\'hero__banner-placeholder\'><span>Game Banner</span><span style=\'font-size:0.7rem;opacity:0.4;letter-spacing:0.12em;\'>assets/banner-16x9.png</span></div>'" />
+    </div>
+
+    <p class="hero__eyebrow fade-up delay-1">CHAINBREAKGAMES &amp; Icegrim Softworks</p>
+    <h1 class="hero__title fade-up delay-2 game-name">Undervalued</h1>
+    <p class="hero__tagline fade-up delay-3">
+      
+    </p>
+
+    <div class="hero__ctas fade-up delay-4">
+      <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
+        Wishlist on Steam
+      </a>
+      <!--TODO Implement Trailer-->
+      <a href="#" class="btn btn--primary disabled">
+        ▶ Watch Trailer
+      </a>
+      <a href="#game" class="btn btn--ghost">
+        Learn More
+      </a>
+    </div>
+
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══════════════════════════════════
+       GAME
+  ══════════════════════════════════ -->
+  <section class="section" id="game" aria-label="Undervalued — game details">
+    <p class="section__label">Games</p>
+
+    <div class="game__layout">
+      <div class="game__image-wrap">
+        <img src="assets/undervalued-screenshot.jpg" alt="Undervalued gameplay screenshot"
+             onerror="this.parentNode.innerHTML='<div class=\'game__image-placeholder\'><span>Screenshot</span><span style=\'font-size:0.7rem;opacity:0.4;letter-spacing:0.12em;\'>assets/screenshot-01.png</span></div>'" />
+      </div>
+
+      <div>
+        <h3 class="game__title game-name">Undervalued</h3>
+        <p class="game__genre">Antique Shop Simulation</p>
+        <p class="game__desc">
+          You didn't want a real job.
+          So here you are. Run an antique shop in Vienna with your friends or on your own.
+          Buy low, sell high, pretend you know what you're doing.
+          Oh, and keep your mood up. That last part is kind of the whole game.
+        </p>
+        <p class="game__genre">An Undervalued Team</p>
+        <div class="game__ctas">
+          <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
+            Steam Page
+          </a>
+          <a href="#" class="btn btn--ghost disabled">▶ Trailer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══════════════════════════════════
+       ABOUT
+  ══════════════════════════════════ -->
+  <section class="section" id="about" aria-label="About CHAINBREAKGAMES">
+    <p class="section__label">The Studio</p>
+    <h2 class="section__title company-name">CHAINBREAKGAMES</h2>
+    <div class="divider"></div>
+
+    <p class="about__body">
+      ChainBreakGames is an independent one-person game studio based in Austria,
+      dedicated to crafting thoughtful and funny multiplayer experiences. We believe
+      the best games tell stories through play — not cutscenes.
+    </p>
+    <p class="about__body">
+      Questions or just want to say hello?
+      <a href="mailto:contact@chainbreak.games" class="about__contact-link">contact@chainbreak.games</a>
+    </p>
+
+    <div class="about__socials">
+      <a href="https://www.youtube.com/@ChainBreakGames" class="btn btn--ghost">
+        Youtube
+      </a>
+      <a href="https://x.com/ChainBreakAT" class="btn btn--ghost">
+        Twitter / X
+      </a>
+      <a href="#" class="btn btn--ghost">
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@chainbreakgames" class="btn btn--ghost">
+        TikTok
+      </a>
+      <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
+        STEAM
+      </a>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+
+    <div class="footer__col">
+      <div class="footer__logo">
+        <span class="footer__logo-text company-name">CHAINBREAKGAMES</span>
+      </div>
+      <p class="footer__tagline">Independent games from Austria.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#game">Undervalued</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="presskit.html">Press Kit</a></li>
+        <li><a href="#">Steam</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <p>
+        <a href="mailto:contact@chainbreak.games">contact@chainbreak.games</a>
+      </p>
+      <p style="margin-top:0.5rem; font-style:italic;">
+        Lambach, Oberösterreich<br />Austria
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p>© <span id="copyright-year"></span> ChainBreak Games e.U. — Marc Koppler. All rights reserved.</p>
+    <a href="impressum.html">Impressum &amp; Datenschutz</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>

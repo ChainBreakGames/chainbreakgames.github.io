@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Press Kit — Undervalued</title>
+  <meta name="description" content="Press kit for Undervalued — an antique shop simulation game by ChainBreakGames and Icegrim Softworks." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-square.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── PRESS KIT SPECIFIC ── */
+    .pk-hero {
+      padding: 8rem 2rem 4rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .pk-hero__banner {
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-mid);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      background: var(--bg-surface);
+    }
+
+    .pk-hero__banner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .pk-hero__banner-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.4rem;
+      border: 2px dashed var(--border-mid);
+      border-radius: var(--radius-md);
+    }
+
+    .pk-hero__banner-placeholder span {
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .pk-hero__info { }
+
+    .pk-game-title {
+      font-family: var(--font-display);
+      font-size: 3rem; font-weight: 600;
+      color: var(--text-primary); line-height: 1.05;
+      margin-bottom: 0.3rem;
+    }
+
+    .pk-game-genre {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 1.5rem;
+    }
+
+    .pk-made-by {
+      display: flex; align-items: center;
+      gap: 0.6rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .pk-made-by__label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .pk-studio-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      background: var(--bg-raised);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem; color: var(--text-secondary);
+    }
+
+    .pk-studio-badge img {
+      width: 18px; height: 18px;
+      object-fit: contain; border-radius: 2px;
+    }
+
+    .pk-studio-badge__placeholder {
+      width: 18px; height: 18px;
+      background: var(--bg-hover);
+      border-radius: 2px;
+      display: inline-flex; align-items: center;
+      justify-content: center;
+      font-size: 0.55rem; color: var(--text-muted);
+    }
+
+    /* ── FACTS TABLE ── */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .fact {
+      background: var(--bg-surface);
+      padding: 1.1rem 1.3rem;
+    }
+
+    .fact__label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 0.3rem;
+    }
+
+    .fact__value {
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    /* ── DESCRIPTION ── */
+    .pk-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-top: 2rem;
+    }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .screenshot-item {
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-mid);
+      background: var(--bg-surface);
+      cursor: pointer;
+    }
+
+    .screenshot-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .screenshot-item:hover img { transform: scale(1.04); }
+
+    .screenshot-item__overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s;
+    }
+
+    .screenshot-item:hover .screenshot-item__overlay { opacity: 1; }
+
+    .screenshot-item__overlay span {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .screenshot-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.4rem;
+      border: 2px dashed var(--border-subtle);
+      border-radius: var(--radius-md);
+    }
+
+    .screenshot-placeholder span {
+      font-size: 0.68rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .screenshots-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── TRAILER ── */
+    .trailer-wrap {
+      margin-top: 2rem;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-mid);
+      background: var(--bg-surface);
+      max-width: 720px;
+    }
+
+    .trailer-wrap iframe {
+      width: 100%; height: 100%; display: block;
+      border: none;
+    }
+
+    .trailer-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .trailer-placeholder .play-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-mid);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 1.2rem;
+    }
+
+    .trailer-placeholder span {
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .trailer-links {
+      display: flex; gap: 0.75rem;
+      flex-wrap: wrap; margin-top: 1.25rem;
+    }
+
+    /* ── STUDIO CARDS ── */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .studio-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .studio-card__header {
+      display: flex; align-items: center;
+      gap: 1rem; margin-bottom: 1.2rem;
+    }
+
+    .studio-card__logo {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      object-fit: contain;
+      background: var(--bg-raised);
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .studio-card__logo-placeholder {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-raised);
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.05em; color: var(--text-muted);
+      text-align: center; line-height: 1.2;
+    }
+
+    .studio-card__name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .studio-card__role {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold-dim); margin-top: 0.15rem;
+    }
+
+    .studio-card__bio {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .studio-card__links {
+      display: flex; gap: 0.5rem;
+      flex-wrap: wrap; margin-top: 1.2rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-entry__label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 0.4rem;
+    }
+
+    .contact-entry__name {
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 0.2rem;
+    }
+
+    .contact-entry__detail {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-entry__detail a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color var(--t-fast);
+    }
+
+    .contact-entry__detail a:hover { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .pk-hero { grid-template-columns: 1fr; gap: 2rem; }
+      .studio-grid { grid-template-columns: 1fr; }
+      .contact-block { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo" aria-label="ChainBreakGames — home">
+    <img src="assets/icon-square.png" alt="" class="nav__logo-img"
+         onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CB</div>'" />
+    <span class="nav__logo-text">ChainBreakGames</span>
+  </a>
+  <ul class="nav__links" role="list">
+    <li><a href="index.html#game">Game</a></li>
+    <li><a href="index.html#about">Studio</a></li>
+    <li><a href="presskit.html" class="active">Press Kit</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+  </ul>
+  <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<main>
+
+  <!-- ══ HERO ══ -->
+  <div class="pk-hero">
+    <div class="pk-hero__banner">
+      <img src="assets/banner-16x9.png" alt="Undervalued key art"
+           onerror="this.parentNode.innerHTML='<div class=\'pk-hero__banner-placeholder\'><span>Key Art</span><span style=\'font-size:0.68rem;opacity:0.4;\'>assets/banner-16x9.png</span></div>'" />
+    </div>
+
+    <div class="pk-hero__info">
+      <p class="pk-game-genre">Press Kit</p>
+      <h1 class="pk-game-title">Undervalued</h1>
+
+      <div class="pk-made-by">
+        <span class="pk-made-by__label">By</span>
+
+        <span class="pk-studio-badge">
+          <img src="assets/icon-square.png" alt=""
+               onerror="this.outerHTML='<span class=\'pk-studio-badge__placeholder\'>CB</span>'" />
+          ChainBreakGames
+        </span>
+
+        <span class="pk-made-by__label">&amp;</span>
+
+        <span class="pk-studio-badge">
+          <!-- TODO: replace with assets/icegrim-icon.png -->
+          <span class="pk-studio-badge__placeholder">IG</span>
+          Icegrim Softworks
+        </span>
+      </div>
+
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a href="#screenshots" class="btn btn--ghost">Screenshots</a>
+        <a href="#trailer"     class="btn btn--ghost">Trailer</a>
+        <a href="#contact"     class="btn btn--primary">Press Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section__rule" />
+
+  <!-- ══ FACTS ══ -->
+  <section class="section" id="facts" aria-label="Game facts">
+    <p class="section__label">At a Glance</p>
+    <h2 class="section__title">Game Facts</h2>
+    <div class="divider"></div>
+
+    <div class="facts-grid">
+      <div class="fact">
+        <p class="fact__label">Title</p>
+        <p class="fact__value">Undervalued</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Genre</p>
+        <p class="fact__value">Gelegenheitsspiele, Indie, Simulationen</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Platform</p>
+        <p class="fact__value">PC (Steam)</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Release Date</p>
+        <!-- TODO: replace with actual date or "Coming Soon" -->
+        <p class="fact__value">2026</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Engine</p>
+        <p class="fact__value">Unreal Engine 5.7</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Price</p>
+        <!-- TODO: replace when known -->
+        <p class="fact__value">TBA</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Publisher</p>
+        <p class="fact__value">ChainBreak Games e.U. &amp; Icegrim Softworks e.U.</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Developer</p>
+        <p class="fact__value">An Undervalued Team</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Languages</p>
+        <p class="fact__value">English, German, French, Italian, Spanish</p>
+      </div>
+      <div class="fact">
+        <p class="fact__label">Website</p>
+        <p class="fact__value">
+          <a href="https://chainbreak.games" style="color:var(--gold);">
+            chainbreak.games
+          </a>
+          <a href="https://icegrim.com" style="color:var(--gold);">
+            icegrim.com
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <p class="pk-description">
+      You didn't want a real job. So here you are.
+      Run an antique shop in Vienna with your friends or on your own.
+      Buy low, sell high, pretend you know what you're doing. Oh, and keep your mood up.
+      That last part is kind of the whole game.
+    </p>
+
+    <!-- TODO: add a second paragraph with more specific gameplay details once ready -->
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══ SCREENSHOTS ══ -->
+  <section class="section" id="screenshots" aria-label="Screenshots">
+    <p class="section__label">Media</p>
+    <h2 class="section__title">Screenshots</h2>
+    <div class="divider"></div>
+
+    <div class="screenshots-grid">
+      <!-- TODO: replace src values with actual screenshots (1920×1080px, PNG) -->
+      <div class="screenshot-item">
+        <img src="assets/screenshot-01.png" alt="Undervalued — screenshot 1"
+             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 01</span><span>assets/screenshot-01.png</span></div>'" />
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshot-02.png" alt="Undervalued — screenshot 2"
+             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 02</span><span>assets/screenshot-02.png</span></div>'" />
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshot-03.png" alt="Undervalued — screenshot 3"
+             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 03</span><span>assets/screenshot-03.png</span></div>'" />
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+      <div class="screenshot-item">
+        <img src="assets/screenshot-04.png" alt="Undervalued — screenshot 4"
+             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 04</span><span>assets/screenshot-04.png</span></div>'" />
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+    </div>
+
+    <p class="screenshots-note">
+      Screenshots may be used freely for editorial coverage of Undervalued.
+      <!-- TODO: add a Google Drive / Dropbox link with the full hi-res pack once ready -->
+    </p>
+
+    <!-- Logo downloads -->
+    <div style="margin-top:2.5rem;">
+      <p class="section__label" style="text-align:left; margin-bottom:1rem;">Logos &amp; Assets</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <!-- TODO: replace hrefs with actual download links or a zip -->
+        <a href="assets/icon-square.png" download class="btn btn--ghost">ChainBreak Logo (PNG)</a>
+        <a href="#"                       download class="btn btn--ghost">Icegrim Logo (PNG) — TODO</a>
+        <a href="assets/banner-16x9.png"  download class="btn btn--ghost">Key Art 16:9 (PNG)</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══ TRAILER ══ -->
+  <section class="section" id="trailer" aria-label="Trailer">
+    <p class="section__label">Video</p>
+    <h2 class="section__title">Trailer</h2>
+    <div class="divider"></div>
+
+    <div class="trailer-wrap">
+      <!--
+        TODO: replace with your actual YouTube embed.
+        Get the embed URL from YouTube → Share → Embed → copy the src value.
+        Example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Undervalued — Official Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="trailer-placeholder">
+        <div class="play-icon">▶</div>
+        <span>Trailer coming soon</span>
+        <span style="font-size:0.7rem;opacity:0.4;letter-spacing:0.1em;">Replace with YouTube embed</span>
+      </div>
+    </div>
+
+    <div class="trailer-links">
+      <a href="#" class="btn btn--ghost">YouTube — TODO</a>
+      <a href="#" class="btn btn--ghost">Download MP4 — TODO</a>
+    </div>
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══ STUDIOS ══ -->
+  <section class="section" id="studios" aria-label="About the studios">
+    <p class="section__label">The Teams</p>
+    <h2 class="section__title">About the Studios</h2>
+    <div class="divider"></div>
+
+    <div class="studio-grid">
+
+      <div class="studio-card">
+        <div class="studio-card__header">
+          <img src="assets/icon-square.png" alt="ChainBreak Games logo"
+               class="studio-card__logo"
+               onerror="this.outerHTML='<div class=\'studio-card__logo-placeholder\'>CB</div>'" />
+          <div>
+            <p class="studio-card__name">ChainBreakGames</p>
+            <p class="studio-card__role">Publisher &amp; Co-Developer</p>
+          </div>
+        </div>
+        <p class="studio-card__bio">
+          ChainBreak Games e.U. is an independent one-person studio based in Lambach, Austria,
+          run by Marc Koppler. The studio focuses on funny multiplayer experiences.
+          Undervalued is ChainBreak's debut title.
+        </p>
+        <div class="studio-card__links">
+          <a href="index.html"                        class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Website</a>
+          <a href="mailto:contact@chainbreak.games"   class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Email</a>
+          <!-- TODO: add social links -->
+        </div>
+      </div>
+
+      <div class="studio-card">
+        <div class="studio-card__header">
+          <!-- TODO: replace with assets/icegrim-icon.png once available -->
+          <div class="studio-card__logo-placeholder">IG</div>
+          <div>
+            <p class="studio-card__name">Icegrim Softworks</p>
+            <p class="studio-card__role">Co-Publisher &amp; Co-Developer</p>
+          </div>
+        </div>
+        <p class="studio-card__bio">
+          <!-- TODO: fill in Icegrim Softworks bio, location, and background -->
+          Icegrim Softworks is an independent game development studio and the creator of <a href="https://icegrim.com/moony.html">Moony: Black_Lotus</a> and <a href="https://icegrim.com/dreamlab.html">Traceur's Dreamlab</a>.
+          They are an equal creative partner on Undervalued.
+        </p>
+        <div class="studio-card__links">
+          <!-- TODO: add Icegrim website, socials, and email -->
+          <a href="#" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Website — TODO</a>
+          <a href="#" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Email — TODO</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section__rule" />
+
+  <!-- ══ CONTACT ══ -->
+  <section class="section" id="contact" aria-label="Press contact">
+    <p class="section__label">Get in Touch</p>
+    <h2 class="section__title">Press Contact</h2>
+    <div class="divider"></div>
+
+    <div class="contact-block">
+      <div class="contact-entry">
+        <p class="contact-entry__label">ChainBreakGames</p>
+        <p class="contact-entry__name">Marc Koppler</p>
+        <p class="contact-entry__detail">
+          <a href="mailto:contact@chainbreak.games">contact@chainbreak.games</a>
+        </p>
+        <p class="contact-entry__detail" style="margin-top:0.3rem; font-style:italic;">
+          Lambach, Austria
+        </p>
+      </div>
+
+      <div class="contact-entry">
+        <p class="contact-entry__label">Icegrim Softworks</p>
+        <!-- TODO: fill in Icegrim press contact details -->
+        <p class="contact-entry__name">TODO — Contact Name</p>
+        <p class="contact-entry__detail">
+          <a href="mailto:TODO@icegrim.com">TODO@icegrim.com</a>
+        </p>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1.25rem; font-style:italic;">
+      For review keys, interview requests, or any press inquiries, reach out to either studio above.
+      We aim to respond within 48 hours.
+    </p>
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__bottom" style="max-width:var(--max-w); margin:0 auto;">
+    <p>© <span id="copyright-year"></span> ChainBreak Games e.U. — Marc Koppler. All rights reserved.</p>
+    <a href="impressum.html">Impressum &amp; Datenschutz</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
