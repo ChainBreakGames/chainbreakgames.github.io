@@ -6,8 +6,57 @@
   <title>Press Kit — Undervalued</title>
   <meta name="description" content="Press kit for Undervalued — an antique shop simulation game by ChainBreakGames and Icegrim Softworks." />
   <meta name="robots" content="index, follow" />
-
+ 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-square.png" />
+  <link rel="canonical" href="https://chainbreak.games/presskit.html" />
+ 
+  <!-- Open Graph -->
+  <meta property="og:title"        content="Undervalued — Press Kit | ChainBreakGames" />
+  <meta property="og:description"  content="Press assets, screenshots, and contact info for Undervalued — an antique shop co-op simulation by ChainBreakGames and Icegrim Softworks." />
+  <meta property="og:image"        content="https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png" />
+  <meta property="og:image:width"  content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="https://chainbreak.games/presskit.html" />
+  <meta property="og:site_name"    content="ChainBreakGames" />
+  <meta property="og:locale"       content="en_US" />
+ 
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@ChainBreakAT" />
+  <meta name="twitter:title"       content="Undervalued — Press Kit | ChainBreakGames" />
+  <meta name="twitter:description" content="Press assets, screenshots, and contact info for Undervalued — an antique shop co-op simulation." />
+  <meta name="twitter:image"       content="https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png" />
+ 
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Undervalued",
+    "description": "An antique shop management co-op game for 1–4 players about knowing what things are worth — and convincing someone else to agree.",
+    "genre": ["Casual", "Indie", "Simulation"],
+    "gamePlatform": "PC",
+    "operatingSystem": "Windows",
+    "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 4 },
+    "url": "https://store.steampowered.com/app/4747920/Undervalued",
+    "image": "https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png",
+    "publisher": [
+      {
+        "@type": "Organization",
+        "name": "ChainBreak Games e.U.",
+        "url": "https://chainbreak.games",
+        "contactPoint": { "@type": "ContactPoint", "email": "contact@chainbreak.games" }
+      },
+      {
+        "@type": "Organization",
+        "name": "Icegrim Softworks",
+        "url": "https://icegrim.com",
+        "contactPoint": { "@type": "ContactPoint", "email": "contact@icegrim.com" }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ── PRESS KIT SPECIFIC ── */
@@ -207,6 +256,7 @@
       border: 1px solid var(--border-mid);
       background: var(--bg-surface);
       max-width: 720px;
+      margin-left: auto; margin-right: auto;
     }
 
     .trailer-wrap iframe {
@@ -220,15 +270,18 @@
       align-items: center; justify-content: center;
       gap: 0.75rem;
     }
-
+ 
     .trailer-placeholder .play-icon {
       width: 52px; height: 52px;
       border-radius: 50%;
       border: 1.5px solid var(--border-mid);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-muted); font-size: 1.2rem;
+      padding-top: 5px;
+      padding-left: 4px;
+      line-height: 1;
     }
-
+ 
     .trailer-placeholder span {
       font-size: 0.75rem; letter-spacing: 0.15em;
       text-transform: uppercase; color: var(--text-muted);
@@ -237,6 +290,7 @@
     .trailer-links {
       display: flex; gap: 0.75rem;
       flex-wrap: wrap; margin-top: 1.25rem;
+      justify-content: center;
     }
 
     /* ── STUDIO CARDS ── */
@@ -345,24 +399,102 @@
       .studio-grid { grid-template-columns: 1fr; }
       .contact-block { grid-template-columns: 1fr; }
     }
+
+    /* ── LIGHTBOX ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.active { display: flex; }
+
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img-wrap img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-mid);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.8);
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border-mid);
+      border-radius: 50%;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: color var(--t-fast), border-color var(--t-fast);
+      z-index: 1001;
+    }
+    .lightbox-close:hover { color: var(--gold-light); border-color: var(--border-strong); }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border-mid);
+      border-radius: 50%;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: color var(--t-fast), border-color var(--t-fast);
+      z-index: 1001;
+    }
+    .lightbox-nav:hover { color: var(--gold-light); border-color: var(--border-strong); }
+    .lightbox-nav--prev { left: 1.5rem; }
+    .lightbox-nav--next { right: 1.5rem; }
+
+    .lightbox-counter {
+      position: fixed;
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- ══════════════════════════════════
+     NAV
+══════════════════════════════════ -->
 <nav class="nav" aria-label="Main navigation">
   <a href="index.html" class="nav__logo" aria-label="ChainBreakGames — home">
-    <img src="assets/icon-square.png" alt="" class="nav__logo-img"
-         onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CB</div>'" />
-    <span class="nav__logo-text">ChainBreakGames</span>
+    <img src="assets/ChainBreakGames/cbg-logo.png" alt="" class="nav__logo-img"
+         onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CBG</div>'" />
+    <span class="nav__logo-text company-name">CHAINBREAKGAMES</span>
   </a>
   <ul class="nav__links" role="list">
     <li><a href="index.html#game">Game</a></li>
     <li><a href="index.html#about">Studio</a></li>
-    <li><a href="presskit.html" class="active">Press Kit</a></li>
+    <li><a href="presskit.html">Press Kit</a></li>
     <li><a href="impressum.html">Impressum</a></li>
   </ul>
+
   <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -374,8 +506,7 @@
   <!-- ══ HERO ══ -->
   <div class="pk-hero">
     <div class="pk-hero__banner">
-      <img src="assets/banner-16x9.png" alt="Undervalued key art"
-           onerror="this.parentNode.innerHTML='<div class=\'pk-hero__banner-placeholder\'><span>Key Art</span><span style=\'font-size:0.68rem;opacity:0.4;\'>assets/banner-16x9.png</span></div>'" />
+      <img src="assets/Games/Undervalued/undervalued_game_banner.png" alt="Undervalued key art"/>
     </div>
 
     <div class="pk-hero__info">
@@ -386,16 +517,14 @@
         <span class="pk-made-by__label">By</span>
 
         <span class="pk-studio-badge">
-          <img src="assets/icon-square.png" alt=""
-               onerror="this.outerHTML='<span class=\'pk-studio-badge__placeholder\'>CB</span>'" />
+          <img src="assets/ChainBreakGames/cbg-logo-simple.png" alt="ChainBreakGames logo"/>
           ChainBreakGames
         </span>
 
         <span class="pk-made-by__label">&amp;</span>
 
         <span class="pk-studio-badge">
-          <!-- TODO: replace with assets/icegrim-icon.png -->
-          <span class="pk-studio-badge__placeholder">IG</span>
+          <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" style="filter: invert(100%);width: 3em;" alt="Icegrim Softworks logo"/>
           Icegrim Softworks
         </span>
       </div>
@@ -423,7 +552,7 @@
       </div>
       <div class="fact">
         <p class="fact__label">Genre</p>
-        <p class="fact__value">Gelegenheitsspiele, Indie, Simulationen</p>
+        <p class="fact__value">Casual, Indie, Simulation</p>
       </div>
       <div class="fact">
         <p class="fact__label">Platform</p>
@@ -431,7 +560,6 @@
       </div>
       <div class="fact">
         <p class="fact__label">Release Date</p>
-        <!-- TODO: replace with actual date or "Coming Soon" -->
         <p class="fact__value">2026</p>
       </div>
       <div class="fact">
@@ -469,13 +597,36 @@
     </div>
 
     <p class="pk-description">
-      You didn't want a real job. So here you are.
-      Run an antique shop in Vienna with your friends or on your own.
-      Buy low, sell high, pretend you know what you're doing. Oh, and keep your mood up.
-      That last part is kind of the whole game.
+      Undervalued is an antique shop management game for 1–4 players about the slow,
+      unglamorous art of knowing what things are worth — and convincing someone else to agree.
     </p>
 
-    <!-- TODO: add a second paragraph with more specific gameplay details once ready -->
+    <p class="pk-description">
+      Every customer is a negotiation waiting to happen. Price too high and they walk.
+      Price too low and you've just funded someone else's weekend. Sell in-store.
+      Move inventory online. Flip the same lamp three times if that's what it takes.
+      The job rewards knowledge, patience, and a tolerance for the printer jamming at the worst possible moment.
+    </p>
+
+    <p class="pk-description">
+      There's also the matter of your mood. Working surrounded by other people's unwanted belongings,
+      in a shop you didn't exactly dream of running, takes a quiet toll.
+      Managing that drain is part of the job — the options available to you range from reasonable to deeply questionable.
+    </p>
+
+    <p class="pk-description">
+      Undervalued is designed around co-op: split the workload, argue over valuations, and decide who has to deal with the customer who's been deliberating over a ceramic bowl for forty minutes. The game supports up to 4 players, with experimental support for up to 99 — for those who feel antique retail was always meant to be a spectator sport.
+    </p>
+
+    <p class="pk-description">
+      - Antique shop management with in-store sales and an online marketplace<br>
+      - Price negotiation system built on knowledge-based progression<br>
+      - Mood system with consequences<br>
+      - A city to explore beyond the shop floor<br>
+      - Co-op for 1–4 players (experimental support up to 99)<br>
+      - A PC in-game to waste time on<br>
+      - Paperballs<br>
+    </p>
   </section>
 
   <hr class="section__rule" />
@@ -486,26 +637,30 @@
     <h2 class="section__title">Screenshots</h2>
     <div class="divider"></div>
 
-    <div class="screenshots-grid">
+    <div class="screenshots-grid" id="screenshots-grid">
       <!-- TODO: replace src values with actual screenshots (1920×1080px, PNG) -->
-      <div class="screenshot-item">
-        <img src="assets/screenshot-01.png" alt="Undervalued — screenshot 1"
-             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 01</span><span>assets/screenshot-01.png</span></div>'" />
+      <div class="screenshot-item" data-lightbox="0">
+        <img src="assets/Games/Undervalued/screenshot-1.jpg" alt="Undervalued — screenshot 1"/>
         <div class="screenshot-item__overlay"><span>View</span></div>
       </div>
-      <div class="screenshot-item">
-        <img src="assets/screenshot-02.png" alt="Undervalued — screenshot 2"
-             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 02</span><span>assets/screenshot-02.png</span></div>'" />
+      <div class="screenshot-item" data-lightbox="1">
+        <img src="assets/Games/Undervalued/screenshot-2.jpg" alt="Undervalued — screenshot 2"/>
         <div class="screenshot-item__overlay"><span>View</span></div>
       </div>
-      <div class="screenshot-item">
-        <img src="assets/screenshot-03.png" alt="Undervalued — screenshot 3"
-             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 03</span><span>assets/screenshot-03.png</span></div>'" />
+      <div class="screenshot-item" data-lightbox="2">
+        <img src="assets/Games/Undervalued/screenshot-3.jpg" alt="Undervalued — screenshot 3"/>
         <div class="screenshot-item__overlay"><span>View</span></div>
       </div>
-      <div class="screenshot-item">
-        <img src="assets/screenshot-04.png" alt="Undervalued — screenshot 4"
-             onerror="this.parentNode.innerHTML='<div class=\'screenshot-placeholder\'><span>Screenshot 04</span><span>assets/screenshot-04.png</span></div>'" />
+      <div class="screenshot-item" data-lightbox="3">
+        <img src="assets/Games/Undervalued/screenshot-4.jpg" alt="Undervalued — screenshot 4"/>
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+      <div class="screenshot-item" data-lightbox="4">
+        <img src="assets/Games/Undervalued/screenshot-5.jpg" alt="Undervalued — screenshot 5"/>
+        <div class="screenshot-item__overlay"><span>View</span></div>
+      </div>
+      <div class="screenshot-item" data-lightbox="5">
+        <img src="assets/Games/Undervalued/screenshot-6.jpg" alt="Undervalued — screenshot 6"/>
         <div class="screenshot-item__overlay"><span>View</span></div>
       </div>
     </div>
@@ -519,10 +674,32 @@
     <div style="margin-top:2.5rem;">
       <p class="section__label" style="text-align:left; margin-bottom:1rem;">Logos &amp; Assets</p>
       <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-        <!-- TODO: replace hrefs with actual download links or a zip -->
-        <a href="assets/icon-square.png" download class="btn btn--ghost">ChainBreak Logo (PNG)</a>
-        <a href="#"                       download class="btn btn--ghost">Icegrim Logo (PNG) — TODO</a>
-        <a href="assets/banner-16x9.png"  download class="btn btn--ghost">Key Art 16:9 (PNG)</a>
+        <a href="assets/ChainBreakGames/cbg-logo.png" download class="btn btn--ghost">ChainBreak Logo (PNG)</a>
+        <a href="assets/ChainBreakGames/cbg-logo-simple.png" download class="btn btn--ghost">ChainBreak Logo Simple (PNG)</a>
+        <a href="assets/IcegrimSoftworks/icegrim_logo_transparent.png" download class="btn btn--ghost">Icegrim Logo (PNG)</a>
+        <a href="assets/Games/Undervalued/undervalued_game_banner.png" download class="btn btn--ghost">Key Art 16:9 (PNG)</a>
+      </div>
+    </div>
+
+    <!-- Bulk downloads -->
+    <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-subtle);">
+      <p class="section__label" style="text-align:left; margin-bottom:0.75rem;">Bulk Downloads</p>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">
+        Download all press assets in one go, or grab the full repository.
+      </p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a href="assets.zip" download class="btn btn--primary">
+          <svg class="btn__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12L3 7h3V2h4v5h3L8 12z"/><rect x="2" y="13" width="12" height="1.5" rx="0.75"/>
+          </svg>
+          Download Assets (.zip)
+        </a>
+        <a href="https://github.com/ChainBreakGames/chainbreakgames.github.io/archive/refs/heads/main.zip" download class="btn btn--ghost">
+          <svg class="btn__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12L3 7h3V2h4v5h3L8 12z"/><rect x="2" y="13" width="12" height="1.5" rx="0.75"/>
+          </svg>
+          Download Archive (.zip)
+        </a>
       </div>
     </div>
   </section>
@@ -536,27 +713,15 @@
     <div class="divider"></div>
 
     <div class="trailer-wrap">
-      <!--
-        TODO: replace with your actual YouTube embed.
-        Get the embed URL from YouTube → Share → Embed → copy the src value.
-        Example:
-        <iframe
-          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-          title="Undervalued — Official Trailer"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      -->
       <div class="trailer-placeholder">
         <div class="play-icon">▶</div>
-        <span>Trailer coming soon</span>
-        <span style="font-size:0.7rem;opacity:0.4;letter-spacing:0.1em;">Replace with YouTube embed</span>
+        <span>Trailer not available yet</span>
       </div>
     </div>
 
     <div class="trailer-links">
-      <a href="#" class="btn btn--ghost">YouTube — TODO</a>
-      <a href="#" class="btn btn--ghost">Download MP4 — TODO</a>
+      <a href="#" class="btn btn--ghost disabled">YouTube</a>
+      <a href="#" class="btn btn--ghost disabled">Download MP4</a>
     </div>
   </section>
 
@@ -572,7 +737,7 @@
 
       <div class="studio-card">
         <div class="studio-card__header">
-          <img src="assets/icon-square.png" alt="ChainBreak Games logo"
+          <img src="assets/ChainBreakGames/cbg-logo-simple.png" alt="ChainBreakGames logo"
                class="studio-card__logo"
                onerror="this.outerHTML='<div class=\'studio-card__logo-placeholder\'>CB</div>'" />
           <div>
@@ -582,34 +747,40 @@
         </div>
         <p class="studio-card__bio">
           ChainBreak Games e.U. is an independent one-person studio based in Lambach, Austria,
-          run by Marc Koppler. The studio focuses on funny multiplayer experiences.
+          run by Marc Koppler. The studio focuses on thoughtful, entertaining and memorable multiplayer experiences.
           Undervalued is ChainBreak's debut title.
         </p>
         <div class="studio-card__links">
           <a href="index.html"                        class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Website</a>
           <a href="mailto:contact@chainbreak.games"   class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Email</a>
-          <!-- TODO: add social links -->
+          <a href="https://www.youtube.com/@ChainBreakGames" class="btn btn--ghost">Youtube</a>
+          <a href="https://x.com/ChainBreakAT" class="btn btn--ghost">Twitter / X</a>
+          <a href="https://www.instagram.com/chainbreakgames" class="btn btn--ghost">Instagram</a>
+          <a href="https://www.tiktok.com/@chainbreakgames" class="btn btn--ghost">TikTok</a>
+          <a href="https://store.steampowered.com/search/?publisher=ChainBreakGames" class="btn btn--steam">STEAM</a>
         </div>
       </div>
 
       <div class="studio-card">
         <div class="studio-card__header">
-          <!-- TODO: replace with assets/icegrim-icon.png once available -->
-          <div class="studio-card__logo-placeholder">IG</div>
+          <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" style="filter: invert(100%);width: 3em;" alt="Icegrim Softworks logo"/>
           <div>
             <p class="studio-card__name">Icegrim Softworks</p>
             <p class="studio-card__role">Co-Publisher &amp; Co-Developer</p>
           </div>
         </div>
         <p class="studio-card__bio">
-          <!-- TODO: fill in Icegrim Softworks bio, location, and background -->
           Icegrim Softworks is an independent game development studio and the creator of <a href="https://icegrim.com/moony.html">Moony: Black_Lotus</a> and <a href="https://icegrim.com/dreamlab.html">Traceur's Dreamlab</a>.
           They are an equal creative partner on Undervalued.
         </p>
         <div class="studio-card__links">
-          <!-- TODO: add Icegrim website, socials, and email -->
-          <a href="#" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Website — TODO</a>
-          <a href="#" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Email — TODO</a>
+          <a href="https://icegrim.com" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Website</a>
+          <a href="mailto:contact@icegrim.com" class="btn btn--ghost" style="font-size:0.72rem; padding:0.5rem 1rem;">Email</a>
+          <a href="https://www.youtube.com/@icegrimsoftworks" class="btn btn--ghost">Youtube</a>
+          <a href="https://x.com/IcegrimOfficial" class="btn btn--ghost">Twitter / X</a>
+          <a href="https://www.instagram.com/icegrimsoftworks" class="btn btn--ghost">Instagram</a>
+          <a href="https://www.tiktok.com/@icegrimsoftworks" class="btn btn--ghost">TikTok</a>
+          <a href="https://store.steampowered.com/search/?publisher=Icegrim%20Softworks" class="btn btn--steam">STEAM</a>
         </div>
       </div>
 
@@ -638,10 +809,12 @@
 
       <div class="contact-entry">
         <p class="contact-entry__label">Icegrim Softworks</p>
-        <!-- TODO: fill in Icegrim press contact details -->
-        <p class="contact-entry__name">TODO — Contact Name</p>
+        <p class="contact-entry__name">Philipp Kollau</p>
         <p class="contact-entry__detail">
-          <a href="mailto:TODO@icegrim.com">TODO@icegrim.com</a>
+          <a href="mailto:contact@icegrim.com">contact@icegrim.com</a>
+        </p>
+        <p class="contact-entry__detail" style="margin-top:0.3rem; font-style:italic;">
+          Marchtrenk, Austria
         </p>
       </div>
     </div>
@@ -662,6 +835,17 @@
     <a href="impressum.html">Impressum &amp; Datenschutz</a>
   </div>
 </footer>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Previous screenshot">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightbox-img" src="" alt="Screenshot" />
+  </div>
+  <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Next screenshot">&#8594;</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
 
 <script src="js/main.js"></script>
 </body>

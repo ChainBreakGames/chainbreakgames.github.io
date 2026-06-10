@@ -1,28 +1,21 @@
-/* ═══════════════════════════════════════════════════════
-   ChainBreak Games — style.css
-   ═══════════════════════════════════════════════════════
-
-   FONTS
-   ─────
-   Replace the two @font-face blocks (or Google Fonts imports)
-   below with your actual typefaces.
-
-   DISPLAY_FONT  → used for headings, titles, game name
-   BODY_FONT     → used for all body copy, nav, buttons
-
-   Example (Google Fonts):
-     @import url('https://fonts.googleapis.com/css2?family=YourFont:wght@400;600&display=swap');
-   Then update the --font-display and --font-body variables.
-═══════════════════════════════════════════════════════ */
-
 @font-face {
     font-family: "CBG-Font";
-    src: url("../assets/Michroma-Regular.ttf") format("truetype");
+    src: url("../assets/Fonts/Michroma-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "Undervalued-Font";
-    src: url("../assets/CinzelDecorative-Bold.ttf") format("truetype");
+    src: url("../assets/Fonts/CinzelDecorative-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Display-Font";
+    src: url("../assets/Fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Body-Font";
+    src: url("../assets/Fonts/Lato-Regular.ttf") format("truetype");
 }
 
 .company-name {
@@ -44,8 +37,8 @@ a.disabled {
 /* ── TOKENS ────────────────────────────────────────── */
 :root {
   /* TODO: swap font names after replacing imports above */
-  --font-display: 'Playfair Display', Georgia, serif;   /* DISPLAY_FONT */
-  --font-body:    'Lato', system-ui, sans-serif;        /* BODY_FONT    */
+  --font-display: 'Display-Font', Georgia, serif;   /* DISPLAY_FONT */
+  --font-body:    'Body-Font', system-ui, sans-serif;        /* BODY_FONT    */
 
   /* Dark antique palette */
   --bg-base:       #0E0B08;
@@ -69,7 +62,7 @@ a.disabled {
   --accent-hover:  #C46A2E;
 
   /* Layout */
-  --max-w:         1000px;
+  --max-w:         1500px;
   --radius-sm:     3px;
   --radius-md:     6px;
   --radius-lg:     10px;
@@ -391,8 +384,78 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
   opacity: 0.6;
 }
 
+.divider-small {
+  width: 50%;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 0 0 1rem;
+  opacity: 0.6;
+}
+
 
 /* ── GAME SECTION ───────────────────────────────────── */
+.game__screenshots {
+  position: relative;
+  overflow: hidden;  /* this must be here and must actually clip */
+  cursor: default;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.game__screenshot-slide {
+  display: flex;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+.game__screenshot-slide img {
+  min-width: 100%;
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.game__screenshot-arrow {
+  display: flex;
+  padding: 0 0 2px 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.game__screenshot-arrow--left  { left: 10px; }
+.game__screenshot-arrow--right { right: 10px; }
+
+.game__screenshots:hover .game__screenshot-arrow:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.game__screenshots:hover {
+  transform: scale(1.03);
+}
+
+.game__screenshot-arrow.hidden {
+  display: none;
+}
+
 .game__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -416,8 +479,6 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
   transition: transform 0.5s ease;
 }
 
-.game__image-wrap:hover img { transform: scale(1.03); }
-
 .game__image-placeholder {
   width: 100%; height: 100%;
   display: flex;
@@ -433,6 +494,63 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.game__team-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.game__dev {
+  position: relative;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0rem;
+  opacity: 0.8;
+}
+
+.game__team {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: var(--gold-dim);
+  margin-bottom: 1.2rem;
+}
+
+.game__team::after {
+    content: "Philipp Kollau\AMarc Koppler\ATobias Mayer\AKai Mezger";
+    white-space: pre;
+
+    position: absolute;
+    top: 0;
+    left: 175%;
+    transform: translateY(-50%);
+
+    padding: 12px 16px;
+    border-radius: 8px;
+
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(194, 140, 77, 0.3);
+
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.game__team:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .game__title {
@@ -465,7 +583,7 @@ nav, main, footer, section, .page-header { position: relative; z-index: 1; }
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .game__ctas {

@@ -3,19 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChainBreakGames — Indie Game Studio</title>
-  <meta name="description" content="ChainBreak Games e.U. is an independent game studio from Austria. Makers of Undervalued — an antique shop simulation game." />
+  <title>ChainBreakGames — Indie Game Studio | Undervalued</title>
+  <meta name="description" content="ChainBreak Games e.U. is an independent game studio from Austria making Undervalued — an antique shop co-op simulation for PC." />
   <meta name="author" content="Marc Koppler — ChainBreak Games e.U." />
 
-  <!-- Open Graph (Steam / social link previews) -->
-  <meta property="og:title"       content="CHAINBREAKGAMES" />
-  <meta property="og:description" content="Independent game studio from Austria. Makers of Undervalued." />
-  <meta property="og:image"       content="assets/banner-16x9.png" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://chainbreak.games/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="ChainBreakGames — Indie Game Studio" />
+  <meta property="og:description" content="Independent game studio from Austria. Making Undervalued — an antique shop co-op simulation." />
+  <meta property="og:image"       content="https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png" />
+  <meta property="og:image:width"  content="1920" />
+  <meta property="og:image:height" content="1080" />
   <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://chainbreak.games/index.html" />
+  <meta property="og:site_name"   content="ChainBreakGames" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@ChainBreakAT" />
+  <meta name="twitter:title"       content="ChainBreakGames — Indie Game Studio" />
+  <meta name="twitter:description" content="Independent game studio from Austria. Making Undervalued — an antique shop co-op simulation." />
+  <meta name="twitter:image"       content="https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Undervalued",
+    "description": "An antique shop management co-op game for 1–4 players about knowing what things are worth — and convincing someone else to agree.",
+    "genre": ["Casual", "Indie", "Simulation"],
+    "gamePlatform": "PC",
+    "operatingSystem": "Windows",
+    "applicationCategory": "Game",
+    "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 4 },
+    "url": "https://store.steampowered.com/app/4747920/Undervalued",
+    "image": "https://chainbreak.games/assets/Games/Undervalued/undervalued_game_banner.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ChainBreak Games e.U.",
+      "url": "https://chainbreak.games",
+      "logo": "https://chainbreak.games/assets/ChainBreakGames/cbg-logo.png",
+      "contactPoint": { "@type": "ContactPoint", "email": "contact@chainbreak.games" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Lambach", "addressCountry": "AT" }
+    }
+  }
+  </script>
 
   <!-- Icons -->
-  <link rel="icon"             type="image/png" sizes="32x32" href="assets/cbg-logo-simple.png" />
-  <link rel="apple-touch-icon"                               href="assets/cbg-logo-simple.png" />
+  <link rel="icon"             type="image/png" sizes="32x32" href="assets/ChainBreakGames/cbg-logo-simple.png" />
+  <link rel="apple-touch-icon"                               href="assets/ChainBreakGames/cbg-logo-simple.png" />
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -27,11 +67,10 @@
 ══════════════════════════════════ -->
 <nav class="nav" aria-label="Main navigation">
   <a href="index.html" class="nav__logo" aria-label="ChainBreakGames — home">
-    <img src="assets/cbg-logo.png" alt="" class="nav__logo-img"
+    <img src="assets/ChainBreakGames/cbg-logo.png" alt="" class="nav__logo-img"
          onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CBG</div>'" />
     <span class="nav__logo-text company-name">CHAINBREAKGAMES</span>
   </a>
-
   <ul class="nav__links" role="list">
     <li><a href="#game">Game</a></li>
     <li><a href="#about">Studio</a></li>
@@ -50,24 +89,23 @@
 ══════════════════════════════════ -->
 <main>
   <section class="hero" aria-label="Hero — Undervalued">
-    <h1 class="hero__announcement fade-up delay-1">Coming 2026</h1>
+    <h1 class="hero__announcement fade-up">Coming 2026</h1>
 
-    <div class="hero__banner fade-up">
-      <img src="assets/undervalued_game_banner.png" alt="Undervalued — antique shop game"
+    <div class="hero__banner fade-up delay-1">
+      <img src="assets/Games/Undervalued/undervalued_game_banner.png" alt="Undervalued — antique shop game"
            onerror="this.parentNode.innerHTML='<div class=\'hero__banner-placeholder\'><span>Game Banner</span><span style=\'font-size:0.7rem;opacity:0.4;letter-spacing:0.12em;\'>assets/banner-16x9.png</span></div>'" />
     </div>
 
-    <p class="hero__eyebrow fade-up delay-1">CHAINBREAKGAMES &amp; Icegrim Softworks</p>
-    <h1 class="hero__title fade-up delay-2 game-name">Undervalued</h1>
-    <p class="hero__tagline fade-up delay-3">
-      
+    <p class="hero__eyebrow fade-up delay-2">CHAINBREAKGAMES &amp; Icegrim Softworks</p>
+    <h1 class="hero__title fade-up delay-3 game-name">Undervalued</h1>
+    <p class="hero__tagline fade-up delay-4">
+      Coop-Multiplayer | Casual | Simulation
     </p>
 
-    <div class="hero__ctas fade-up delay-4">
+    <div class="hero__ctas fade-up delay-5">
       <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
         Wishlist on Steam
       </a>
-      <!--TODO Implement Trailer-->
       <a href="#" class="btn btn--primary disabled">
         ▶ Watch Trailer
       </a>
@@ -88,8 +126,11 @@
 
     <div class="game__layout">
       <div class="game__image-wrap">
-        <img src="assets/undervalued-screenshot.jpg" alt="Undervalued gameplay screenshot"
-             onerror="this.parentNode.innerHTML='<div class=\'game__image-placeholder\'><span>Screenshot</span><span style=\'font-size:0.7rem;opacity:0.4;letter-spacing:0.12em;\'>assets/screenshot-01.png</span></div>'" />
+        <div class="game__screenshots"
+            data-screenshots='["assets/Games/Undervalued/screenshot-1.jpg","assets/Games/Undervalued/screenshot-2.jpg","assets/Games/Undervalued/screenshot-3.jpg","assets/Games/Undervalued/screenshot-4.jpg","assets/Games/Undervalued/screenshot-5.jpg","assets/Games/Undervalued/screenshot-6.jpg"]'>
+          <button class="game__screenshot-arrow game__screenshot-arrow--left" aria-label="Previous screenshot">&#8249;</button>
+          <button class="game__screenshot-arrow game__screenshot-arrow--right" aria-label="Next screenshot">&#8250;</button>
+        </div>
       </div>
 
       <div>
@@ -101,7 +142,9 @@
           Buy low, sell high, pretend you know what you're doing.
           Oh, and keep your mood up. That last part is kind of the whole game.
         </p>
-        <p class="game__genre">An Undervalued Team</p>
+        <div class="divider-small"></div>
+        <p class="game__dev">Developers:</p>
+        <p class="game__team">An Undervalued Team</p>
         <div class="game__ctas">
           <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
             Steam Page
@@ -124,7 +167,7 @@
 
     <p class="about__body">
       ChainBreakGames is an independent one-person game studio based in Austria,
-      dedicated to crafting thoughtful and funny multiplayer experiences. We believe
+      dedicated to crafting thoughtful, entertaining and memorable multiplayer experiences. I believe
       the best games tell stories through play — not cutscenes.
     </p>
     <p class="about__body">
@@ -139,13 +182,13 @@
       <a href="https://x.com/ChainBreakAT" class="btn btn--ghost">
         Twitter / X
       </a>
-      <a href="#" class="btn btn--ghost">
+      <a href="https://www.instagram.com/chainbreakgames" class="btn btn--ghost">
         Instagram
       </a>
       <a href="https://www.tiktok.com/@chainbreakgames" class="btn btn--ghost">
         TikTok
       </a>
-      <a href="https://store.steampowered.com/app/4747920/Undervalued" class="btn btn--steam">
+      <a href="https://store.steampowered.com/search/?publisher=ChainBreakGames" class="btn btn--steam">
         STEAM
       </a>
     </div>
