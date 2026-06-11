@@ -277,8 +277,7 @@
       border: 1.5px solid var(--border-mid);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-muted); font-size: 1.2rem;
-      padding-top: 5px;
-      padding-left: 4px;
+      padding-left: 0.2rem;
       line-height: 1;
     }
  
@@ -400,6 +399,18 @@
       .contact-block { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 440px) {
+      .pk-made-by {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .pk-made-by__label {
+        display: none;
+      }
+    }
+
     /* ── LIGHTBOX ── */
     .lightbox-overlay {
       display: none;
@@ -436,34 +447,36 @@
     .lightbox-close {
       position: fixed;
       top: 1.5rem; right: 1.5rem;
-      width: 40px; height: 40px;
-      background: var(--bg-raised);
-      border: 1px solid var(--border-mid);
+      width: 44px; height: 44px;
+      background: rgba(0,0,0,0.55);
+      border: none;
       border-radius: 50%;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       font-size: 1.2rem;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: color var(--t-fast), border-color var(--t-fast);
+      transition: background var(--t-fast), color var(--t-fast);
       z-index: 1001;
     }
-    .lightbox-close:hover { color: var(--gold-light); border-color: var(--border-strong); }
+    .lightbox-close:hover { background: rgba(0,0,0,0.8); color: var(--gold-light); }
 
     .lightbox-nav {
       position: fixed;
       top: 50%; transform: translateY(-50%);
       width: 44px; height: 44px;
-      background: var(--bg-raised);
-      border: 1px solid var(--border-mid);
+      padding-bottom: 0.15rem;
+      background: rgba(0,0,0,0.55);
+      border: none;
       border-radius: 50%;
-      color: var(--text-secondary);
-      font-size: 1.1rem;
+      color: var(--text-primary);
+      font-size: 2rem;
+      line-height: 1;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: color var(--t-fast), border-color var(--t-fast);
+      transition: background var(--t-fast), color var(--t-fast);
       z-index: 1001;
     }
-    .lightbox-nav:hover { color: var(--gold-light); border-color: var(--border-strong); }
+    .lightbox-nav:hover { background: rgba(0,0,0,0.8); color: var(--gold-light); }
     .lightbox-nav--prev { left: 1.5rem; }
     .lightbox-nav--next { right: 1.5rem; }
 
@@ -484,7 +497,7 @@
 ══════════════════════════════════ -->
 <nav class="nav" aria-label="Main navigation">
   <a href="index.html" class="nav__logo" aria-label="ChainBreakGames — home">
-    <img src="assets/ChainBreakGames/cbg-logo.png" alt="" class="nav__logo-img"
+    <img src="assets/ChainBreakGames/cbg-logo.jpg" alt="" class="nav__logo-img"
          onerror="this.outerHTML='<div class=\'nav__logo-img nav__logo-img--fallback\'>CBG</div>'" />
     <span class="nav__logo-text company-name">CHAINBREAKGAMES</span>
   </a>
@@ -517,14 +530,14 @@
         <span class="pk-made-by__label">By</span>
 
         <span class="pk-studio-badge">
-          <img src="assets/ChainBreakGames/cbg-logo-simple.png" alt="ChainBreakGames logo"/>
+          <img src="assets/ChainBreakGames/cbg-logo-simple.jpg" alt="ChainBreakGames logo"/>
           ChainBreakGames
         </span>
 
         <span class="pk-made-by__label">&amp;</span>
 
         <span class="pk-studio-badge">
-          <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" style="filter: invert(100%);width: 3em;" alt="Icegrim Softworks logo"/>
+          <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" style="filter: invert(100%);" alt="Icegrim Softworks logo"/>
           Icegrim Softworks
         </span>
       </div>
@@ -667,7 +680,6 @@
 
     <p class="screenshots-note">
       Screenshots may be used freely for editorial coverage of Undervalued.
-      <!-- TODO: add a Google Drive / Dropbox link with the full hi-res pack once ready -->
     </p>
 
     <!-- Logo downloads -->
@@ -737,9 +749,10 @@
 
       <div class="studio-card">
         <div class="studio-card__header">
-          <img src="assets/ChainBreakGames/cbg-logo-simple.png" alt="ChainBreakGames logo"
-               class="studio-card__logo"
-               onerror="this.outerHTML='<div class=\'studio-card__logo-placeholder\'>CB</div>'" />
+          <div class="studio-card__logo">
+            <img src="assets/ChainBreakGames/cbg-logo-simple.jpg" alt="ChainBreakGames logo"/>
+          </div>
+          
           <div>
             <p class="studio-card__name">ChainBreakGames</p>
             <p class="studio-card__role">Publisher &amp; Co-Developer</p>
@@ -763,7 +776,10 @@
 
       <div class="studio-card">
         <div class="studio-card__header">
-          <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" style="filter: invert(100%);width: 3em;" alt="Icegrim Softworks logo"/>
+          <div class="studio-card__logo">
+            <img src="assets/IcegrimSoftworks/icegrim_logo_transparent.png" alt="Icegrim Softworks logo"
+            style="filter: invert(100%);"/>
+          </div>
           <div>
             <p class="studio-card__name">Icegrim Softworks</p>
             <p class="studio-card__role">Co-Publisher &amp; Co-Developer</p>
@@ -839,11 +855,11 @@
 <!-- ══ LIGHTBOX ══ -->
 <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
   <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
-  <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Previous screenshot">&#8592;</button>
+  <button class="lightbox-nav lightbox-nav--prev" id="lightbox-prev" aria-label="Previous screenshot">&#8249;</button>
   <div class="lightbox-img-wrap">
     <img id="lightbox-img" src="" alt="Screenshot" />
   </div>
-  <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Next screenshot">&#8594;</button>
+  <button class="lightbox-nav lightbox-nav--next" id="lightbox-next" aria-label="Next screenshot">&#8250;</button>
   <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
