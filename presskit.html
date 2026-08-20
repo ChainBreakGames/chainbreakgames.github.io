@@ -730,15 +730,23 @@
     <div class="divider"></div>
 
     <div class="trailer-wrap">
-      <div class="trailer-placeholder">
-        <div class="play-icon">▶</div>
-        <span>Trailer not available yet</span>
-      </div>
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/PD2pXLLwD0I"
+        title="Trailer"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
     </div>
 
     <div class="trailer-links">
-      <a href="#" class="btn btn--ghost disabled">YouTube</a>
-      <a href="#" class="btn btn--ghost disabled">Download MP4</a>
+      <a href="https://www.youtube.com/watch?v=PD2pXLLwD0I" class="btn btn--primary" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="assets/trailer-1.mp4" download class="btn btn--ghost">
+        <svg class="btn__icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 12L3 7h3V2h4v5h3L8 12z"/><rect x="2" y="13" width="12" height="1.5" rx="0.75"/>
+        </svg>
+        Download MP4
+      </a>
     </div>
   </section>
 
